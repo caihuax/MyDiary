@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_diary_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
+    tools:context="com.example.mydiary.mydiary.DiaryEditActivity">
+
+    <LinearLayout
+        android:id="@+id/edit_button_bar"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_height="50dp"
+        android:gravity="left|center_vertical">
+
+        <Button
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:id="@+id/clock"
+            android:background="@drawable/clock"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:id="@+id/done"
+            android:background="@drawable/done" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/edit_date_bar"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:weightSum="4">
+
+        <TextView
+            android:text="2015年"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_year"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:text="9月"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_month"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:text="9日"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_date"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:text="FRI"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_day"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ems="10"
+        android:id="@+id/diary_text"
+        android:inputType="textMultiLine"
+        android:layout_above="@id/edit_button_bar"
+        android:layout_below="@id/edit_date_bar"
+        android:gravity="start"/>
+
+</RelativeLayout>
