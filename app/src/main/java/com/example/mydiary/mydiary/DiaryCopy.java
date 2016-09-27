@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by caihuax on 2016/9/26.
  */
 
-public class DiaryCopy implements Serializable {
+class DiaryCopy implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String year;
@@ -15,7 +15,7 @@ public class DiaryCopy implements Serializable {
     private String day;
     private String text;
 
-    public DiaryCopy() {
+    DiaryCopy() {
         year = "";
         month = "";
         date = "";
@@ -23,27 +23,27 @@ public class DiaryCopy implements Serializable {
         text = "";
     }
 
-    public String getYear() {
+    String getYear() {
         return year;
     }
 
-    public String getMonth() {
+    String getMonth() {
         return month;
     }
 
-    public String getDate() {
+    String getDate() {
         return date;
     }
 
-    public String getDay() {
+    String getDay() {
         return day;
     }
 
-    public String getText() {
+    String getText() {
         return text;
     }
 
-    public void setData(String y, String m, String d, String s, String t) {
+    void setData(String y, String m, String d, String s, String t) {
         year = y;
         month = m;
         date = d;

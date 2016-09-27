@@ -40,7 +40,7 @@ public class DiaryEditActivity extends AppCompatActivity {
         day.setText(s);
 
         final DiaryCopy diaryCopy = (DiaryCopy) getDiary(y+"-"+m+"-"+d);
-        if (diaryCopy.getYear() != ""){
+        if (!diaryCopy.getYear().equals("")){
             diary_text.setText(diaryCopy.getText());
         }
         else{

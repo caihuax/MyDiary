@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -23,14 +21,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected static Calendar calendar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         int y = calendar.get(Calendar.YEAR);
         int m = calendar.get(Calendar.MONTH);
 
@@ -48,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         month_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //calendar.set(Calendar.MONTH,position);
-                //refreshDiaryList();
+                refreshDiaryList();
             }
 
             @Override
@@ -59,20 +54,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Spinner year_spinner = (Spinner) this.findViewById(R.id.pick_year);
-        List<String> year_list = new ArrayList<String>();
+        List<String> year_list = new ArrayList<>();
         y = y < 1970 ? 1970 : y;
         for(int i = 1970;i <= y; ++i){
             year_list.add(i+"");
         }
-        ArrayAdapter<String> year_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, year_list);
+        ArrayAdapter<String> year_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, year_list);
         year_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year_spinner.setAdapter(year_adapter);
         year_spinner.setSelection(y - 1970);
         year_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //calendar.set(Calendar.YEAR,1970+position);
-                //refreshDiaryList();
+                refreshDiaryList();
             }
 
             @Override
@@ -87,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         refreshDiaryList();
-
     }
 
     protected  Object getDiary(String name){
@@ -124,8 +117,13 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout diary_list = (LinearLayout) this.findViewById(R.id.diary_list);
         diary_list.removeAllViews();
 
-        int y = calendar.get(Calendar.YEAR);
-        int m = calendar.get(Calendar.MONTH) + 1;  //得到的月份是0-11 所以要+1
+        Spinner month_spinner = (Spinner) this.findViewById(R.id.pick_month);
+        Spinner year_spinner = (Spinner) this.findViewById(R.id.pick_year);
+
+        int y = 1970 + year_spinner.getSelectedItemPosition(); //年份起点是1970 所以要+1970
+        int m = month_spinner.getSelectedItemPosition() + 1;  //得到的月份是0-11 所以要+1
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(y, m, 1);
         int d = Calculate.countDaysOfaMonth(calendar);  //这里的d是当前月份的天数
         DiaryCopy diaryCopy;
 
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout.LayoutParams lp;
 
             diaryCopy = (DiaryCopy) getDiary(y+"-"+m+"-"+i);
-            if(diaryCopy.getYear() != ""){
+            if(!diaryCopy.getYear().equals("")){
 
                 item.setBackgroundResource(R.drawable.frame);
                 item.setWeightSum(8);
