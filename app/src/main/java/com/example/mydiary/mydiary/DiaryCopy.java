@@ -2,10 +2,6 @@ package com.example.mydiary.mydiary;
 
 import java.io.Serializable;
 
-/**
- * Created by caihuax on 2016/9/26.
- */
-
 class DiaryCopy implements Serializable {
 
     private static final long serialVersionUID = 1L;
