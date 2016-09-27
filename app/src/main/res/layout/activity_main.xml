@@ -14,17 +14,37 @@
         android:id="@+id/button_bar"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_alignParentBottom="true"
+        android:weightSum="9"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Spinner
+            android:layout_height="wrap_content"
+            android:id="@+id/pick_month"
+            android:layout_weight="3"
+            android:entries="@array/month"
+            android:layout_width="100dp"
+            android:gravity="center"
+            android:background="@color/colorBackground"
+            android:popupBackground="@color/colorBackground" />
 
         <Button
             android:id="@+id/plus_button"
             android:background="@drawable/plus"
             android:layout_width="32dp"
             android:layout_height="32dp" />
+
+        <Spinner
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/pick_year"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:background="@color/colorBackground"
+            android:popupBackground="@color/colorBackground" />
     </LinearLayout>
 
     <ScrollView
